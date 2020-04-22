@@ -219,3 +219,29 @@ REDIS_PORT=6379
 # To set Redis as default queue connection
 QUEUE_CONNECTION=redis
 ```
+
+
+### Testing
+Add this to your routes file
+```
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/job', function () {
+    # Test the Job Dispatcher Works via Redis.
+    # Will print line to log file
+    App\Jobs\ProcessJobExample::dispatch();
+});
+
+Route::get('cache', function () {
+    $cached = Cache::remember('users', 100, function () {
+        return Carbon::now()->diffForHumans();
+    });
+
+    return response()->json([
+        "cached" =>  $cached,
+        "now" => Carbon::now()->diffForHumans()
+    ]);
+});
+```
