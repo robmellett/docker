@@ -241,14 +241,17 @@ Route::get('/job', function () {
 });
 
 Route::get('cache', function () {
-    $cached = Cache::remember('users', 100, function () {
-        return Carbon::now()->diffForHumans();
+    $cached = Cache::remember('users', 10, function () {
+        return Carbon::now();
     });
 
     return response()->json([
-        "cached" =>  $cached,
+        "cached" =>  $cached->diffForHumans(),
         "now" => Carbon::now()->diffForHumans()
     ]);
 });
 
 ```
+
+Then test with
+`docker-compose up
