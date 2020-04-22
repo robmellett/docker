@@ -223,7 +223,13 @@ QUEUE_CONNECTION=redis
 
 ### Testing
 Add this to your routes file
-```
+```php
+<?php
+
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -244,4 +250,5 @@ Route::get('cache', function () {
         "now" => Carbon::now()->diffForHumans()
     ]);
 });
+
 ```
