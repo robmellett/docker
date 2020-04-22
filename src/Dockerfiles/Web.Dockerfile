@@ -29,7 +29,7 @@ RUN apt-get update \
     && apt-get -q -y install nginx-full
 
 # Install PHP
-RUN add-apt-repository ppa:ondrej/php && apt-get update
+RUN LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php && apt-get update
 RUN apt-get -q -y install \
     php7.4 \
     php7.4-fpm \
@@ -56,11 +56,13 @@ RUN apt-get -q -y install \
     php-curl \
     php-zip \
     php-xdebug \
-    php-memcached
+    php-memcached \
+    php-redis
 RUN command -v php
 
 # Install Composer
 RUN php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer
+
 
 #
 # Configuration
