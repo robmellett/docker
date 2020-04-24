@@ -94,6 +94,7 @@ RUN mkdir -p /var/log/xdebug && touch /var/log/xdebug/xdebug.log && chmod 775 /v
 # Run PhpUnit for faster local performance
 RUN echo 'alias phpunit="./vendor/bin/phpunit --order-by=defects --stop-on-failure"' >> '/home/ubuntu/.bashrc'
 RUN echo 'alias amr="php artisan migrate:refresh --seed"' >> '/home/ubuntu/.bashrc'
+RUN echo 'alias test="php artisan test"' >> '/home/ubuntu/.bashrc'
 
 # Start Service Scripts
 RUN mkdir -p /etc/my_init.d
