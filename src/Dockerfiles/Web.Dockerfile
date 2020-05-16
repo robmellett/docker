@@ -89,9 +89,11 @@ COPY src/php/xdebug.ini /etc/php/7.4/mods-available/xdebug.ini
 COPY src/php/www.conf /etc/php/7.4/fpm/pool.d/www.conf
 COPY src/php/php-fpm.conf /etc/php/7.4/fpm/php-fpm.conf
 
-RUN mkdir -p /var/log/xdebug && touch /var/log/xdebug/xdebug.log && chmod 775 /var/log/xdebug/xdebug.log
+RUN mkdir -p /var/log/xdebug \
+  && touch /var/log/xdebug/xdebug.log \
+  && chmod 775 /var/log/xdebug/xdebug.log
 
-# Run PhpUnit for faster local performance
+# Configure User Aliases
 RUN echo 'alias phpunit="./vendor/bin/phpunit --order-by=defects --stop-on-failure"' >> '/home/ubuntu/.bashrc'
 RUN echo 'alias amr="php artisan migrate:refresh --seed"' >> '/home/ubuntu/.bashrc'
 RUN echo 'alias test="php artisan test"' >> '/home/ubuntu/.bashrc'
