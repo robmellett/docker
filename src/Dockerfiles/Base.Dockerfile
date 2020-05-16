@@ -18,7 +18,8 @@ RUN usermod -aG www-data ubuntu
 
 # Install Recommended Packages. 
 RUN apt-get update \
-  && apt-get -q -y install rsync curl wget zip unzip git htop lnav vim build-essential make libpng-dev pngquant unattended-upgrades
+  && apt-get -q -y install \ 
+  rsync curl wget zip unzip git htop lnav vim build-essential make libpng-dev pngquant unattended-upgrades
 
 # Node
 RUN curl --silent --location https://deb.nodesource.com/setup_10.x | bash - && apt-get update
