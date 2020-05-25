@@ -1,5 +1,5 @@
 FROM robmellett/base:latest
-LABEL Rob Mellett <robmellett@gmail.com>
+LABEL Rob Mellett <dev@robmellett.com>
 
 # Environmental Configuration
 ENV XDEBUG_REMOTE_ENABLE=${XDEBUG_REMOTE_ENABLE}

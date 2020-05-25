@@ -1,5 +1,5 @@
 FROM phusion/baseimage:0.11
-LABEL Rob Mellett <robmellett@gmail.com>
+LABEL Rob Mellett <dev@robmellett.com>
 
 # Ensure UTF-8
 RUN locale-gen en_US.UTF-8

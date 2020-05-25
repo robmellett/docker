@@ -1,5 +1,5 @@
 FROM robmellett/base:latest
-LABEL Rob Mellett <robmellett@gmail.com>
+LABEL Rob Mellett <dev@robmellett.com>
 
 # Install Recommended Packages
 RUN apt-get update \
