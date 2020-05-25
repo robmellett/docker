@@ -94,9 +94,7 @@ RUN mkdir -p /var/log/xdebug \
   && chmod 775 /var/log/xdebug/xdebug.log
 
 # Configure User Aliases
-RUN echo 'alias phpunit="./vendor/bin/phpunit --order-by=defects --stop-on-failure"' >> '/home/ubuntu/.bashrc'
-RUN echo 'alias amr="php artisan migrate:refresh --seed"' >> '/home/ubuntu/.bashrc'
-RUN echo 'alias test="php artisan test"' >> '/home/ubuntu/.bashrc'
+COPY src/bash/bashrc /home/ubuntu/.bashrc
 
 # Start Service Scripts
 RUN mkdir -p /etc/my_init.d
