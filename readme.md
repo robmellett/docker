@@ -307,3 +307,11 @@ While you are connected, you can access common laravel commands via their alisas
 | `paqr`  |  `php artisan queue:retry` |
 | `paqt`  |  `php artisan queue:table` |
 | `paqw`  |  `php artisan queue:work` |
+
+
+### Ngrok
+If you need to open your machine to the internet for the internet (like testing webhooks). You can do so with Ngrok.
+
+```
+ngrok http https://localhost:7000
+```
