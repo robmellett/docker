@@ -104,11 +104,11 @@ COPY src/services/setup-web.sh /etc/my_init.d/setup
 COPY src/ssl/ssl.sh /etc/my_init.d/ssl.sh
 
 RUN chmod +x \
-  /etc/my_init.d/setup \
   /etc/my_init.d/php.sh \
-  /usr/sbin/xdebug.sh \
+  /etc/my_init.d/setup \
+  /etc/my_init.d/ssl.sh \
   /usr/local/bin/confd \
-  /etc/my_init.d/ssl.sh
+  /usr/sbin/xdebug.sh
 
 # Create SSL Certs
 RUN /etc/my_init.d/ssl.sh
