@@ -100,7 +100,7 @@ COPY src/bash/bashrc /home/ubuntu/.bashrc
 RUN mkdir -p /etc/my_init.d
 COPY src/services/xdebug.sh /usr/sbin/xdebug.sh
 COPY src/services/php.sh /etc/my_init.d/php.sh
-COPY src/services/setup.sh /etc/my_init.d/setup
+COPY src/services/setup-web.sh /etc/my_init.d/setup
 COPY src/ssl/ssl.sh /etc/my_init.d/ssl.sh
 
 RUN chmod +x \
