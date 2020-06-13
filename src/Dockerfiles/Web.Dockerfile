@@ -107,6 +107,7 @@ COPY src/ssl/ssl.sh /etc/my_init.d/ssl.sh
 RUN chmod +x \
   /etc/my_init.d/php.sh \
   /etc/my_init.d/setup \
+  /etc/my_init.d/ssh.sh \
   /etc/my_init.d/ssl.sh \
   /usr/local/bin/confd \
   /usr/sbin/xdebug.sh
@@ -127,7 +128,7 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 CMD ["/sbin/my_init"]
 
 # Clean up APT when done to minimise filesize.
-RUN apt-get -q -y clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Set working directory to the project
 WORKDIR /var/www/html
