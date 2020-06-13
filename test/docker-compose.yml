@@ -14,8 +14,14 @@ services:
       - ../app:/var/www/html
       - ~/.mkcert/docker-selfsigned.pem:/etc/nginx/ssl/nginx-selfsigned.crt # Override default SSL Cert
       - ~/.mkcert/docker-selfsigned-key.pem:/etc/nginx/ssl/nginx-selfsigned.key # Override default SSL keys
+    networks:
+      - docker-test
     ports:
       - "2222:22"
       - 7000:443 # Https
       - 7090:9100 # Prometheus, node_exporter
     tty: true
+
+networks:
+  docker-test:
+    driver: bridge
