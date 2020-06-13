@@ -3,8 +3,8 @@ version: '3.1'
 services:
   acme-app:
     build:
-      context: .
-      dockerfile: ../src/Dockerfiles/Web.Dockerfile
+      context: ../
+      dockerfile: src/Dockerfiles/Web.Dockerfile
     environment:
       CONTAINER_ROLE: app # [app, horizon, queue, scheduler]
       APP_ENV: local # [local, staging, production]
