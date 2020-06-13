@@ -140,4 +140,4 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 WORKDIR /var/www/html
 
 # Expose Ports for Web/HTTPS & Prometheus node_exporter
-EXPOSE 22 80 443 9100
+EXPOSE 80 443 9100
