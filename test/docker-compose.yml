@@ -1,7 +1,9 @@
 version: '3.1'
 
 services:
-  acme-app:
+  docker-test:
+    hostname: docker-test
+    container_name: docker-test
     build:
       context: ../
       dockerfile: src/Dockerfiles/Web.Dockerfile
@@ -13,6 +15,7 @@ services:
       - ~/.mkcert/docker-selfsigned.pem:/etc/nginx/ssl/nginx-selfsigned.crt # Override default SSL Cert
       - ~/.mkcert/docker-selfsigned-key.pem:/etc/nginx/ssl/nginx-selfsigned.key # Override default SSL keys
     ports:
+      - "2222:22"
       - 7000:443 # Https
       - 7090:9100 # Prometheus, node_exporter
     tty: true

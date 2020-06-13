@@ -115,6 +115,12 @@ RUN chmod +x \
 # Create SSL Certs
 RUN /etc/my_init.d/ssl.sh
 
+# Configure SSH
+RUN rm -f /etc/service/sshd/down
+COPY src/ssh/docker-dev.pub /tmp/docker-dev.pub
+RUN cat /tmp/docker-dev.pub >> /root/.ssh/authorized_keys 
+# RUN cat /tmp/docker-dev.pub >> /home/ubuntu/.ssh/authorized_keys && rm -f /tmp/docker-dev.pub
+
 # Set Permissions and make sure www-data owns the directory
 RUN chown -R ubuntu:www-data /var/www/html
 
@@ -134,4 +140,4 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 WORKDIR /var/www/html
 
 # Expose Ports for Web/HTTPS & Prometheus node_exporter
-EXPOSE 80 443 9100
+EXPOSE 22 80 443 9100
