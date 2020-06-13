@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+  acme-app:
+    build:
+      context: .
+      dockerfile: ../src/Dockerfiles/Web.Dockerfile
+    environment:
+      CONTAINER_ROLE: app # [app, horizon, queue, scheduler]
+      APP_ENV: local # [local, staging, production]
+    volumes:
+      - ./:/var/www/html
+      - ~/.mkcert/docker-selfsigned.pem:/etc/nginx/ssl/nginx-selfsigned.crt # Override default SSL Cert
+      - ~/.mkcert/docker-selfsigned-key.pem:/etc/nginx/ssl/nginx-selfsigned.key # Override default SSL keys
+    ports:
+      #- 7000:80 # Web
+      - 7000:443 # Https
+      - 7090:9100 # Prometheus, node_exporter
+    tty: true
