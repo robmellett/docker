@@ -22,6 +22,7 @@ fi
 
 if [ "$env" == "local" ]; then
 
+    # Configure XDebug Settings from the docker .env variables
     sh /usr/sbin/xdebug.sh
 
     if [ ! -z "$DEV_UID" ]; then
@@ -33,26 +34,26 @@ fi
 
 confd -onetime -backend env
 
-# App
+# Configure Docker as App
 if [ "$role" = "app" ]; then
 
     echo ">> Setting role to: [app]"
     ln -sf /etc/supervisor/conf.d-available/app.conf /etc/supervisor/conf.d/app.conf
 
-# Queue
+# Configure Docker as Queue
 elif [ "$role" = "queue" ]; then
 
     echo ">> Setting role to: [queue]"
     ln -sf /etc/supervisor/conf.d-available/queue.conf /etc/supervisor/conf.d/queue.conf
 
-# Horizon
+# Configure Docker as Horizon
 elif [ "$role" = "horizon" ]; then
 
     echo ">> Setting role to: [queue]"
     ln -sf /etc/supervisor/conf.d-available/horizon.conf /etc/supervisor/conf.d/horizon.conf
 
 
-# Scheduler
+# Configure Docker as Scheduler
 elif [ "$role" = "scheduler" ]; then
 
     echo ">> Setting role to: [scheduler]"
