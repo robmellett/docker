@@ -14,6 +14,7 @@ Baseimage-docker is a special Docker image that is configured for correct use wi
 
 ## Docker Versions
 You can use the following docker images
+
 - robmellett/lemp:7.4
 - robmellett/lemp:7.3
 - robmellett/lemp:7.2
@@ -35,7 +36,7 @@ And the required files will be copied into your project.
 
 Copy the following files into your project.
 
-`./src/docker-compose.yml` and `./src/.docker.env.example.` into your project. 
+`./src/docker-compose.yml` and `./src/.docker.env.example.` into your project.
 
 
 ## Run the application with:
@@ -104,21 +105,21 @@ Update values in the `.docker.env` file
 Create a `.vscode/launch.json` with the following.
 ```
 {
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "Listen for XDebug",
-            "type": "php",
-            "request": "launch",
-            "port": 9000,
-            "log": false,
-            "externalConsole": false,
-            "pathMappings": {
-                "/var/www/html": "${workspaceRoot}",
-            },
-            "ignore": ["**/vendor/**/*.php"]
-        }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Listen for XDebug",
+      "type": "php",
+      "request": "launch",
+      "port": 9000,
+      "log": false,
+      "externalConsole": false,
+      "pathMappings": {
+          "/var/www/html": "${workspaceRoot}",
+      },
+      "ignore": ["**/vendor/**/*.php"]
+    }
+  ]
 }
 ```
 
@@ -143,6 +144,7 @@ Create a `.vscode/launch.json` with the following.
 `service php7.4-fpm reload`
 
 ### XDebug Resources
+
 - https://serversforhackers.com/c/getting-xdebug-working
 - https://www.jetbrains.com/help/phpstorm/troubleshooting-php-debugging.html
 - https://www.jetbrains.com/help/phpstorm/configuring-xdebug.html
@@ -157,6 +159,7 @@ When connecting to the docker database you can use the settings provided in the 
 ![Datagrip Server Settings 1](wiki/datagrip-server-settings-2.png "Datagrip Server Settings 1")
 
 ## If you need to use MySQL instead of Postgres, you can configure `docker-compose.yml` with the following:
+
 ```yml
 acme-database:
   image: mysql:latest
@@ -189,9 +192,7 @@ to
 
 `'client' => env('REDIS_CLIENT', 'predis'),`
 
-```
-QUEUE_CONNECTION=redis
-```
+`QUEUE_CONNECTION=redis`
 
 Or for a specific job via:
 
@@ -200,7 +201,8 @@ App\Jobs\ProcessJobExample::dispatch()->onConnection('redis');
 ```
 
 Sample Redis Config
-```
+
+```env
 # Laravel Env Settings
 # Configure Laravel to work with Docker containers.
 # Use in laravel .env file
@@ -220,9 +222,10 @@ REDIS_PORT=6379
 QUEUE_CONNECTION=redis
 ```
 
-
 ### Testing
+
 Add this to your routes file
+
 ```php
 <?php
 
@@ -254,9 +257,10 @@ Route::get('cache', function () {
 ```
 
 Then test with
-`docker-compose up
+`docker-compose up`
 
 ### Alias Commands
+
 While you are connected, you can access common laravel commands via their alisas below.
 
 | Alias | Description |
@@ -310,8 +314,9 @@ While you are connected, you can access common laravel commands via their alisas
 
 
 ### Ngrok
+
 If you need to open your machine to the internet for the internet (like testing webhooks). You can do so with Ngrok.
 
-```
+```sh
 ngrok http https://localhost:7000
 ```
