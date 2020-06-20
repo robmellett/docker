@@ -86,6 +86,7 @@ ADD src/nginx/ssl-params.conf /etc/nginx/snippets/ssl-params.conf
 # PHP Config
 COPY src/php/php.ini /etc/php/7.4/cli/php.ini
 COPY src/php/xdebug.ini /etc/php/7.4/mods-available/xdebug.ini
+COPY src/php/xdebug.ini /etc/php/7.4/mods-available/xdebug.ini.original
 COPY src/php/www.conf /etc/php/7.4/fpm/pool.d/www.conf
 COPY src/php/php-fpm.conf /etc/php/7.4/fpm/php-fpm.conf
 
