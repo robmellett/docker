@@ -33,10 +33,9 @@ RUN LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php && apt-get update
 RUN apt-get -q -y install \
     php7.4 \
     php7.4-fpm \
-    php7.4-common \
-    php7.4-cli \
-    php7.4-mbstring \
     php7.4-bcmath \
+    php7.4-cli \
+    php7.4-common \
     php7.4-curl \
     php7.4-dev \
     php7.4-gd \
@@ -44,6 +43,7 @@ RUN apt-get -q -y install \
     php7.4-intl \
     php7.4-intl \
     php7.4-json \
+    php7.4-mbstring \
     php7.4-mbstring \
     php7.4-mysql \
     php7.4-pgsql \
@@ -98,20 +98,28 @@ COPY src/bash/bashrc /home/ubuntu/.bashrc
 
 # Start Service Scripts
 RUN mkdir -p /etc/my_init.d
-COPY src/services/xdebug.sh /usr/sbin/xdebug.sh
 COPY src/services/php.sh /etc/my_init.d/php.sh
-COPY src/services/setup.sh /etc/my_init.d/setup
+COPY src/services/setup-web.sh /etc/my_init.d/setup
+COPY src/services/ssh.sh /etc/my_init.d/ssh.sh
+COPY src/services/xdebug.sh /usr/sbin/xdebug.sh
 COPY src/ssl/ssl.sh /etc/my_init.d/ssl.sh
 
 RUN chmod +x \
-  /etc/my_init.d/setup \
   /etc/my_init.d/php.sh \
-  /usr/sbin/xdebug.sh \
+  /etc/my_init.d/setup \
+  /etc/my_init.d/ssh.sh \
+  /etc/my_init.d/ssl.sh \
   /usr/local/bin/confd \
-  /etc/my_init.d/ssl.sh
+  /usr/sbin/xdebug.sh
 
 # Create SSL Certs
 RUN /etc/my_init.d/ssl.sh
+
+# Configure SSH
+RUN rm -f /etc/service/sshd/down
+COPY src/ssh/docker-dev.pub /tmp/docker-dev.pub
+RUN cat /tmp/docker-dev.pub >> /root/.ssh/authorized_keys 
+# RUN cat /tmp/docker-dev.pub >> /home/ubuntu/.ssh/authorized_keys && rm -f /tmp/docker-dev.pub
 
 # Set Permissions and make sure www-data owns the directory
 RUN chown -R ubuntu:www-data /var/www/html
@@ -126,7 +134,7 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 CMD ["/sbin/my_init"]
 
 # Clean up APT when done to minimise filesize.
-RUN apt-get -q -y clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Set working directory to the project
 WORKDIR /var/www/html
