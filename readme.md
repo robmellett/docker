@@ -203,7 +203,6 @@ App\Jobs\ProcessJobExample::dispatch()->onConnection('redis');
 Sample Redis Config
 
 ```env
-# Laravel Env Settings
 # Configure Laravel to work with Docker containers.
 # Use in laravel .env file
 
@@ -311,7 +310,6 @@ While you are connected, you can access common laravel commands via their alisas
 | `paqr`  |  `php artisan queue:retry` |
 | `paqt`  |  `php artisan queue:table` |
 | `paqw`  |  `php artisan queue:work` |
-
 
 ### Ngrok
 
