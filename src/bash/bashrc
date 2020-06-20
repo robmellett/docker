@@ -160,7 +160,7 @@ xdebug() {
 
     if [ -f "$XDEBUG" ]; then
         rm -rf /etc/php/7.4/mods-available/xdebug.ini
-        service php7.3-fpm restart
+        service php7.4-fpm restart
         echo ">>> xdebug is now inactive.";
     else
         cp /etc/php/7.4/mods-available/xdebug.ini.original /etc/php/7.4/mods-available/xdebug.ini
