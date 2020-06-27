@@ -4,6 +4,7 @@ set -e
 
 role=${CONTAINER_ROLE:-app}
 env=${APP_ENV:-production}
+xdebug_enabled=${XDEBUG_ENABLED}
 
 if [ "$env" != "local" ]; then
 
@@ -22,8 +23,10 @@ fi
 
 if [ "$env" == "local" ]; then
 
-    # Configure XDebug Settings from the docker .env variables
-    sh /usr/sbin/xdebug.sh
+    if [ "$xdebug_enabled" == "true" ]; then
+        # Configure XDebug Settings from the docker .env variables
+        sh /usr/sbin/xdebug.sh
+    fi
 
     if [ ! -z "$DEV_UID" ]; then
         echo "Changing www-data UID to $DEV_UID"
