@@ -59,7 +59,6 @@ build-all-versions:
 
 # Node Docker Image
 build-node:
-  when: manual
   stage: build
   variables:
     IMAGE_TAG: $CI_REGISTRY_IMAGE
