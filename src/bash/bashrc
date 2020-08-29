@@ -123,6 +123,7 @@ alias phpunit="./vendor/bin/phpunit --order-by=defects --stop-on-failure"
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/laravel
 alias test="php artisan test"
 alias artisan="php artisan"
+alias tinker="php artisan tinker"
 
 alias pam="php artisan migrate"
 alias pamf="php artisan migrate:fresh"
