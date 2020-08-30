@@ -62,7 +62,7 @@ build-node:
   variables:
     IMAGE_TAG: $CI_REGISTRY_IMAGE
   script:
-    - docker build -f ./Dockerfiles/Node.Dockerfile -t $CI_REGISTRY_IMAGE/node .
+    - docker build -f ./src/Dockerfiles/Node.Dockerfile -t $CI_REGISTRY_IMAGE/node .
     - docker login docker.io
     - docker push $IMAGE_TAG/node
   only:
