@@ -150,10 +150,13 @@ alias pacoc="php artisan config:clear"
 alias pavic="php artisan view:clear"
 alias paroc="php artisan route:clear"
 
-alias paqf="php artisan queue:failed"
+alias paqf="php artisan queue:flush"
+alias paqr="php artisan queue:restart"
+
+alias paqfl="php artisan queue:failed"
 alias paqft="php artisan queue:failed-table"
 alias paql="php artisan queue:listen"
-alias paqr="php artisan queue:retry"
+alias paqrt="php artisan queue:retry"
 alias paqt="php artisan queue:table"
 alias paqw="php artisan queue:work"
 
