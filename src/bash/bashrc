@@ -119,6 +119,9 @@ fi
 # Phpunit Helper
 alias phpunit="./vendor/bin/phpunit --order-by=defects --stop-on-failure"
 
+# Composer Alias
+alias cda="composer dump-autoload"
+
 # Laravel Alias are from: 
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/laravel
 alias test="php artisan test"
