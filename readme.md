@@ -225,9 +225,8 @@ QUEUE_CONNECTION=redis
 
 ### Enabling at first boot
 ```
-sudo systemctl start spark.service
-sudo systemctl stop spark.service
-sudo systemctl enable spark.service
+sudo systemctl enable horizon.service
+sudo systemctl enable queue.service
 ```
 
 ### Start

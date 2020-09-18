@@ -115,12 +115,6 @@ RUN chmod +x \
 # Create SSL Certs
 RUN /etc/my_init.d/ssl.sh
 
-# Configure SSH
-RUN rm -f /etc/service/sshd/down
-COPY src/ssh/docker-dev.pub /tmp/docker-dev.pub
-RUN cat /tmp/docker-dev.pub >> /root/.ssh/authorized_keys 
-# RUN cat /tmp/docker-dev.pub >> /home/ubuntu/.ssh/authorized_keys && rm -f /tmp/docker-dev.pub
-
 # Set Permissions and make sure www-data owns the directory
 RUN chown -R ubuntu:www-data /var/www/html
 
