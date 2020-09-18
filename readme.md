@@ -179,40 +179,23 @@ acme-database:
     - MYSQL_ROOT_PASSWORD=root
 ```
 
-## Redis
+## Configuring Redis & the Database
 Configure redis as the default connection in `.env`.
 
-`composer require predis/predis`
-
-In `config/database.php` you might need to change:
-
-`'client' => env('REDIS_CLIENT', 'redis'),`
-
-to
-
-`'client' => env('REDIS_CLIENT', 'predis'),`
-
-`QUEUE_CONNECTION=redis`
-
-Or for a specific job via:
-
-```PHP
-App\Jobs\ProcessJobExample::dispatch()->onConnection('redis');
-```
-
-Sample Redis Config
+#### In Larvel 8/7/6 Applications
 
 ```env
 # Configure Laravel to work with Docker containers.
 # Use in laravel .env file
 
-DB_CONNECTION=mysql
+DB_CONNECTION=pgsql
 DB_HOST=docker-database
-DB_PORT=3306
+DB_PORT=5432
 DB_DATABASE=laravel
 DB_USERNAME=laravel
 DB_PASSWORD=secret
 
+REDIS_CLIENT=predis
 REDIS_HOST=docker-redis
 REDIS_PASSWORD=null
 REDIS_PORT=6379
@@ -220,10 +203,13 @@ REDIS_PORT=6379
 # To set Redis as default queue connection
 QUEUE_CONNECTION=redis
 ```
+Or for a specific job via:
 
 ### Supervisor Services
 Documention:
 - https://medium.com/@rohit_shirke/configuring-supervisor-for-laravel-queues-81e555e550c6
+
+Test the configuration is running on the docker instance with.
 
 ```
 supervisorctl -c /etc/supervisor/supervisord.conf
@@ -265,6 +251,12 @@ Route::get('cache', function () {
 
 Then test with
 `docker-compose up`
+
+## Connecting to the docker instances.
+```
+docker exec -it --user ubuntu acme-app bash
+docker exec -it --user ubuntu acme-queue bash
+```
 
 ### Alias Commands
 
