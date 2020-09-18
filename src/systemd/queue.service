@@ -1,0 +1,12 @@
+[Unit]
+Description=Laravel Queue Supervisor
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+ExecStart=/usr/bin/php /var/www/html/artisan queue:work --queue=high,default,low --verbose --tries=3 --timeout=90
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
