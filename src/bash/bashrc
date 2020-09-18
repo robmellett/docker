@@ -118,6 +118,7 @@ fi
 
 # Tail and clear the log file
 alias tlog="echo > storage/logs/laravel.log && tail -n 50 -f storage/logs/laravel.log"
+alias clog="echo > storage/logs/laravel.log"
 
 # Phpunit Helper
 alias phpunit="./vendor/bin/phpunit --order-by=defects --stop-on-failure"
