@@ -229,32 +229,6 @@ Documention:
 supervisorctl -c /etc/supervisor/supervisord.conf
 ```
 
-### Systemd Services
-
-### Enabling at first boot
-```
-sudo systemctl enable horizon.service
-sudo systemctl enable queue.service
-```
-
-### Start
-```
-sudo systemctl start horizon
-sudo systemctl start queue
-```
-
-### Restart
-```
-sudo systemctl start horizon
-sudo systemctl start queue
-```
-
-### Stop
-```
-sudo systemctl stop horizon
-sudo systemctl stop queue
-```
-
 ## Testing
 
 Add this to your routes file
