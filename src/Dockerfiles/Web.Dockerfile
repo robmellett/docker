@@ -72,8 +72,8 @@ COPY src/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 COPY src/supervisor/conf.d/*.conf /etc/supervisor/conf.d-available/
 
 # Confd Config
-COPY src/confd/templates /etc/confd/templates
-COPY src/confd/conf.d /etc/confd/conf.d
+# COPY src/confd/templates /etc/confd/templates
+# COPY src/confd/conf.d /etc/confd/conf.d
 
 # Nginx Config
 ADD src/nginx/nginx.conf /etc/nginx/nginx.conf

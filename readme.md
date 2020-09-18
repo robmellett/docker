@@ -221,6 +221,14 @@ REDIS_PORT=6379
 QUEUE_CONNECTION=redis
 ```
 
+### Supervisor Services
+Documention:
+- https://medium.com/@rohit_shirke/configuring-supervisor-for-laravel-queues-81e555e550c6
+
+```
+supervisorctl -c /etc/supervisor/supervisord.conf
+```
+
 ### Systemd Services
 
 ### Enabling at first boot
