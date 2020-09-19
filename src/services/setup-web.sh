@@ -23,6 +23,9 @@ fi
 
 if [ "$env" == "local" ]; then
 
+    # Clear previous logs
+    echo > "/var/www/html/storage/logs/laravel.log"
+
     if [ "$xdebug_enabled" == "true" ]; then
         # Configure XDebug Settings from the docker .env variables
         sh /usr/sbin/xdebug.sh
@@ -71,4 +74,5 @@ fi
 # the PHP-FPM service
 mkdir -p /run/php
 
+# Start Supervisor Monitoring
 exec supervisord -c /etc/supervisor/supervisord.conf
