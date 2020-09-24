@@ -17,6 +17,11 @@ ENV XDEBUG_IDEKEY=${XDEBUG_IDEKEY}
 RUN apt-get update \
   && apt-get -q -y install supervisor sqlite3
 
+# Install Postgres Support for pg_dump, | Optional: postgresql-12
+RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" | tee /etc/apt/sources.list.d/pgdg.list
+RUN apt-get install postgresql-client-12
+
 # Install Prometheus Monitoring
 RUN curl https://s3-eu-west-1.amazonaws.com/deb.robustperception.io/41EFC99D.gpg | apt-key add -
 RUN apt-get update && apt-get -q -y install prometheus-node-exporter
