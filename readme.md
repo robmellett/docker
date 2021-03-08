@@ -317,3 +317,6 @@ If you need to open your machine to the internet for the internet (like testing 
 ```sh
 ngrok http https://localhost:7000
 ```
+
+### Restart Services
+`sudo service php7.3-fpm restart`
