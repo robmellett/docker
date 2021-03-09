@@ -54,6 +54,7 @@ RUN apt-get -q -y install \
     php7.4-pgsql \
     php7.4-soap \
     php7.4-sqlite \
+    php7.4-redis \
     php7.4-xml \
     php7.4-xml \
     php7.4-zip \
@@ -61,8 +62,7 @@ RUN apt-get -q -y install \
     php-curl \
     php-zip \
     php-xdebug \
-    php-memcached \
-    php-redis
+    php-memcached
 RUN command -v php
 
 # Install Composer
