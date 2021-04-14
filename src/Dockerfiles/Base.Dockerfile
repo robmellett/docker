@@ -22,7 +22,7 @@ RUN apt-get update \
   rsync curl wget zip unzip git htop lnav vim build-essential make libpng-dev pngquant unattended-upgrades
 
 # Node
-RUN curl --silent --location https://deb.nodesource.com/setup_10.x | bash - && apt-get update
+RUN curl --silent --location https://deb.nodesource.com/setup_12.x | bash - && apt-get update
 RUN apt-get -q -y install nodejs
 
 # Yarn
