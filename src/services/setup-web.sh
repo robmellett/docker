@@ -71,9 +71,9 @@ else
 fi
 
 # Setup tinker directory
-mkdir -p /home/ubuntu/.config
-chown -R ubuntu: /home/ubuntu/
-chown -R ubuntu: /home/ubuntu/.config
+# mkdir -p /home/ubuntu/.config
+# chown -R ubuntu: /home/ubuntu/
+# chown -R ubuntu: /home/ubuntu/.config
 
 # Docker needs this line before it can run
 # the PHP-FPM service
