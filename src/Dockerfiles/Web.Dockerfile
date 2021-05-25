@@ -61,8 +61,8 @@ RUN apt-get -q -y install \
     php-mysql \
     php-curl \
     php-zip \
-    php-xdebug \
-    php7.4-xdebug \
+    # php-xdebug \
+    # php7.4-xdebug \
     php-memcached
 RUN command -v php
 
