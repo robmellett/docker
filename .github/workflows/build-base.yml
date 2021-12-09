@@ -6,7 +6,7 @@ on:
       - 'master'
 
 jobs:
-  docker:
+  base-image:
     runs-on: ubuntu-latest
     steps:
       -
