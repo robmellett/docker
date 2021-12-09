@@ -12,10 +12,10 @@ Baseimage-docker is a special Docker image that is configured for correct use wi
 - Mechanisms for easily running multiple processes, without violating the Docker philosophy.
 - You can use it as a base for your own Docker images.
 
-## Docker Versions
+# Docker Versions
 You can use the following docker images
 
-# Base
+## Base
 - robmellett/base
 
 ## PHP
