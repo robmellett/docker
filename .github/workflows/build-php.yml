@@ -27,6 +27,7 @@ jobs:
         name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
-          context: src/php80
+          context: ./src/php80
+          file: ./src/php80/Dockerfile
           push: true
           tags: robmellett/php-80:latest
