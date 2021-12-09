@@ -32,6 +32,6 @@ jobs:
           file: ./src/php80/Dockerfile
           push: true
           tags: robmellett/php-80:latest
-        env:
-          WWWGROUP: 1000
-          WWWUSER: 1000
+          secrets: |
+              WWWGROUP=1000
+              WWWUSER=1000
