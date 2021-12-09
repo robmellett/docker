@@ -1,4 +1,4 @@
-FROM phusion/baseimage:1.0.0
+FROM phusion/baseimage:focal-1.0.0
 LABEL Rob Mellett <dev@robmellett.com>
 
 # Ensure UTF-8
