@@ -19,6 +19,7 @@ You can use the following docker images
 - robmellett/base
 
 ## PHP
+These are based on the [Laravel Sail ](https://laravel.com/docs/8.x/sail) images provided by Taylor Otwell.
 - robmellett/php-81
 - robmellett/php-80
 - robmellett/php-74
