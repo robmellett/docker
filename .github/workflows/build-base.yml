@@ -26,6 +26,6 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          file: src/base/Base.Dockerfile
+          file: src/base/Dockerfile
           push: true
           tags: robmellett/base:latest
