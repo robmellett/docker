@@ -26,7 +26,7 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          context: src/php74
+          context: ./src/php80
           file: Dockerfile
           push: true
           tags: robmellett/php-80:latest
@@ -51,7 +51,7 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          context: src/php74
+          context: ./src/php74
           file: Dockerfile
           push: true
           tags: robmellett/php-74:latest
