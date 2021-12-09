@@ -1,4 +1,4 @@
-FROM phusion/baseimage:0.11
+FROM phusion/baseimage:latest
 LABEL Rob Mellett <dev@robmellett.com>
 
 # Ensure UTF-8
