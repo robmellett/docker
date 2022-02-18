@@ -17,3 +17,5 @@ git add .
 git commit -m 'Laravel Sail Bump'
 
 git push -u origin "feature/laravel-sail-upgrade"
+
+git request-pull "master"
