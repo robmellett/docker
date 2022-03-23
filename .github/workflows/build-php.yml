@@ -15,14 +15,6 @@ jobs:
       matrix:
         php: [81, 80, 74]
 
-      #   include:
-      #     - php-version: "8.1"
-      #       name: "81"
-      #     - php-version: "8.0"
-      #       name: "80"
-      #     - php-version: "7.4"
-      #       name: "74"
-
     name: Build PHP ${{ matrix.php }}
 
     steps:
