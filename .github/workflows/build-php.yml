@@ -39,6 +39,6 @@ jobs:
           context: ./src/php${{ matrix.php }}
           file: ./src/php${{ matrix.php }}/Dockerfile
           push: true
-          tags: robmellett/php-${{ matrix.php }}:latest,robmellett/php-${{ matrix.php }}:${{ github.GITHUB_SHA }}
+          tags: robmellett/php-${{ matrix.php }}:latest,${{ steps.meta.outputs.tags }}
           build-args: |
             WWWGROUP=1000
