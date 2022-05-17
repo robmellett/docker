@@ -22,16 +22,13 @@ RUN apt-get update \
   rsync curl wget zip unzip git htop lnav vim build-essential make libpng-dev pngquant unattended-upgrades
 
 # Node
-RUN curl --silent --location https://deb.nodesource.com/setup_12.x | bash - && apt-get update
+RUN curl --silent --location https://deb.nodesource.com/setup_16.x | bash - && apt-get update
 RUN apt-get -q -y install nodejs
 
 # Yarn
 RUN wget -qO - https://raw.githubusercontent.com/yarnpkg/releases/gh-pages/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get -q -y update && apt-get -q -y install yarn
-
-# Confd
-ADD https://github.com/kelseyhightower/confd/releases/download/v0.16.0/confd-0.16.0-linux-amd64 /usr/local/bin/confd
 
 # Use baseimage-docker's init system.
 # https://github.com/phusion/baseimage-docker
