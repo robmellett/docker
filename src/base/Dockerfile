@@ -16,26 +16,29 @@ RUN ln -sf /usr/share/zoneinfo/UTC /etc/localtime
 RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 ubuntu
 RUN usermod -aG www-data ubuntu
 
-# Install Recommended Packages. 
+# Install Recommended Packages
+# Clean up APT when done to minimise filesize.
 RUN apt-get update \
-  && apt-get -q -y install \ 
-  rsync curl wget zip unzip git htop lnav vim build-essential make libpng-dev pngquant unattended-upgrades
-
-# Node
-RUN curl --silent --location https://deb.nodesource.com/setup_16.x | bash - && apt-get update
-RUN apt-get -q -y install nodejs
-
-# Yarn
-RUN wget -qO - https://raw.githubusercontent.com/yarnpkg/releases/gh-pages/debian/pubkey.gpg | apt-key add -
-RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-RUN apt-get -q -y update && apt-get -q -y install yarn
+    && apt-get install -y curl ca-certificates zip unzip git \
+    && mkdir -p ~/.gnupg \
+    && chmod 600 ~/.gnupg \
+    && echo "disable-ipv6" >> ~/.gnupg/dirmngr.conf \
+    && echo "keyserver hkp://keyserver.ubuntu.com:80" >> ~/.gnupg/dirmngr.conf \
+    && apt-get update \
+    && curl -sLS https://deb.nodesource.com/setup_16.x | bash - \
+    && apt-get install -y nodejs \
+    && npm install -g npm \
+    && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | tee /usr/share/keyrings/yarn.gpg >/dev/null \
+    && echo "deb [signed-by=/usr/share/keyrings/yarn.gpg] https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list \
+    && apt-get update \
+    && apt-get install -y yarn \
+    && apt-get -y autoremove \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Use baseimage-docker's init system.
 # https://github.com/phusion/baseimage-docker
 CMD ["/sbin/my_init"]
 
-# Clean up APT when done to minimise filesize.
-RUN apt-get -q -y clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
 # Set working directory to the project
-WORKDIR /var/www/html
+WORKDIR /home/ubuntu
