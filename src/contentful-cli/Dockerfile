@@ -1,4 +1,4 @@
-FROM ubuntu:21.10
+FROM ubuntu:22.04
 LABEL Rob Mellett <dev@robmellett.com>
 
 RUN apt-get update \
