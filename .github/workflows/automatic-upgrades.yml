@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@master
         with:
           repository: laravel/sail
-          ref: refs/heads/release
+          path: laravel-sail
 
       - name: Update Laravel Sail
         run: ls -la
