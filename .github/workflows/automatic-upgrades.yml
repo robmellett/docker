@@ -5,6 +5,9 @@ on:
     branches:
       - "feature/automatic-upgrades"
 
+  schedule:
+    - cron: "0 0 * * 3"
+
 permissions:
   contents: write
 
