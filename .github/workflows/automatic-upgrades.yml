@@ -24,8 +24,8 @@ jobs:
           repository: laravel/sail
           path: laravel-sail
 
-      # - name: Update Laravel Sail
-      #   run: sh upgrade.sh
+      - name: Update Laravel Sail
+        run: echo "This is a test" > test.txt
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
