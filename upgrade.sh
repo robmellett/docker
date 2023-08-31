@@ -1,8 +1,6 @@
 #!/bin/bash
 
-git checkout -b 'feature/laravel-sail-upgrade'
-
-git clone https://github.com/laravel/sail temp
+cd laravel-sail
 
 cp temp/runtimes/7.4/* src/php74
 
@@ -10,7 +8,7 @@ cp temp/runtimes/8.0/* src/php80
 
 cp temp/runtimes/8.1/* src/php81
 
-rm -rf temp/
+rm -rf cd laravel-sail
 
 git add .
 
@@ -18,4 +16,4 @@ git commit -m 'Laravel Sail Bump'
 
 git push -u origin "feature/laravel-sail-upgrade"
 
-git request-pull "origin/master" "feature/laravel-sail-upgrade"
+# git request-pull "origin/master" "feature/laravel-sail-upgrade"

@@ -25,4 +25,4 @@ jobs:
           path: laravel-sail
 
       - name: Update Laravel Sail
-        run: ls -la
+        run: sh upgrade.sh
