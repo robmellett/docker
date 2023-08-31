@@ -2,6 +2,8 @@
 
 cd laravel-sail
 
+ls -la
+
 cp runtimes/7.4/* src/php74
 
 cp runtimes/8.0/* src/php80
