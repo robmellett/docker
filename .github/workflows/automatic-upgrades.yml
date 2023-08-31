@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  update:
+  automatic-upgrade:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,5 +18,11 @@ jobs:
         with:
           ref: master
 
+      - name: Checkout Laravel Sail
+        uses: actions/checkout@master
+        with:
+          repository: laravel/sail
+          ref: refs/heads/release
+
       - name: Update Laravel Sail
-        run: sh upgrade.sh
+        run: ls -la
