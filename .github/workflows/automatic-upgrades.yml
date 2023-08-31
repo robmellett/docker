@@ -27,10 +27,13 @@ jobs:
       - name: Update Laravel Sail
         run: |
           echo "This is a test" > test.txt
+
           tree laravel-sail
-          cp laravel-sail/src/runtimes/7.4/* src/php74
-          cp laravel-sail/src/runtimes/8.0/* src/php80
-          cp laravel-sail/src/runtimes/8.1/* src/php81
+
+          cp laravel-sail/runtimes/7.4/* src/php74
+          cp laravel-sail/runtimes/8.0/* src/php80
+          cp laravel-sail/runtimes/8.1/* src/php81
+
           rm -rf laravel-sail
 
       - name: Create Pull Request
