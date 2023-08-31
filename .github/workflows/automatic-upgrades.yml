@@ -25,7 +25,9 @@ jobs:
           path: laravel-sail
 
       - name: Update Laravel Sail
-        run: echo "This is a test" > test.txt
+        run: |
+          echo "This is a test" > test.txt
+          ls -la laravel-sail
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
