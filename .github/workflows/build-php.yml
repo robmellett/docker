@@ -15,7 +15,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: [81, 80, 74]
+        php: [81, 82, 80]
 
     name: Build PHP ${{ matrix.php }}
 
