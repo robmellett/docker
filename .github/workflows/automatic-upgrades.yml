@@ -27,5 +27,15 @@ jobs:
       - name: Update Laravel Sail
         run: sh upgrade.sh
 
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
+      - name: Create commits
+        run: |
+          git config user.name 'Automatic Sail Upgrade'
+          git config user.email 'robmellett@users.noreply.github.com'
+          date +%s > report.txt
+          git commit -am "Modify tracked file during workflow"
+          date +%s > new-report.txt
+          git add -A
+          git commit -m "Add untracked file during workflow"
+
+      # - name: Create Pull Request
+      #   uses: peter-evans/create-pull-request@v5
