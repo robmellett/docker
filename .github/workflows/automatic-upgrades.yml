@@ -28,6 +28,10 @@ jobs:
         run: |
           echo "This is a test" > test.txt
           ls -la laravel-sail
+          cp laravel-sail/src/runtimes/7.4/* src/php74
+          cp laravel-sail/src/runtimes/8.0/* src/php80
+          cp laravel-sail/src/runtimes/8.1/* src/php81
+          rm -rf laravel-sail
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
