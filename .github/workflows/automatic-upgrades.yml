@@ -27,7 +27,7 @@ jobs:
       - name: Update Laravel Sail
         run: |
           echo "This is a test" > test.txt
-          ls -la laravel-sail
+          tree laravel-sail
           cp laravel-sail/src/runtimes/7.4/* src/php74
           cp laravel-sail/src/runtimes/8.0/* src/php80
           cp laravel-sail/src/runtimes/8.1/* src/php81
