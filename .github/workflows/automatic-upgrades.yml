@@ -26,3 +26,6 @@ jobs:
 
       - name: Update Laravel Sail
         run: sh upgrade.sh
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
