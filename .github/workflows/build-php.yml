@@ -45,3 +45,4 @@ jobs:
           tags: robmellett/php-${{ matrix.php }}:latest,${{ steps.meta.outputs.tags }}
           build-args: |
             WWWGROUP=1000
+            WWWUSER=1000
