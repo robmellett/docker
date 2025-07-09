@@ -27,8 +27,18 @@ You can use the image with:
 - `robmellett/php-80`
 - `robmellett/php-74`
 
+You can automate the Laravel sail upgrade by running the following command:
+
+This will allow you to pull the latest docker runtime updates from [Laravel Sail](https://github.com/laravel/sail).
+
+```shell
+sh src/scripts/update-sail.sh
+```
+
 ## Hasura CLI
 
 You can use the image with:
+
+This will download and install the [Hasura CLI](https://hasura.io/docs/2.0/hasura-cli/overview/).
 
 - `robmellett/hasura-cli`
