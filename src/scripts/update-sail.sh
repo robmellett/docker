@@ -8,5 +8,6 @@ cp laravel-sail/runtimes/8.1/* ./src/php81
 cp laravel-sail/runtimes/8.2/* ./src/php82
 cp laravel-sail/runtimes/8.3/* ./src/php83
 cp laravel-sail/runtimes/8.4/* ./src/php84
+cp laravel-sail/runtimes/8.5/* ./src/php85
 
 rm -rf laravel-sail
