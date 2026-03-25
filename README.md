@@ -47,3 +47,11 @@ You can use the image with:
 This will download and install the [Hasura CLI](https://hasura.io/docs/2.0/hasura-cli/overview/).
 
 - `robmellett/hasura-cli`
+
+## Docker
+
+You can build docker images locally by running the following.
+
+```
+docker build -t robmellett/<name-of-container>:latest .
+```
