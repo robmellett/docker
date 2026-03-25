@@ -11,9 +11,9 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        image: ["base", "php84"]
+        image: ["base", "php84", "php85"]
 
-    name: Build Docker Containers [${{ matrix.image }}]
+    name: Build Containers [${{ matrix.image }}]
 
     steps:
       - name: Check Out Repo
