@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        image: ["base", "php80", "php81", "php82", "php83", "php84", "php85"]
+        image: ["base", "php84"]
 
     name: Build Docker Containers [${{ matrix.image }}]
 
@@ -30,8 +30,7 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: ./src/${{ matrix.image }}
-          file: ./Dockerfile
-          push: true
+          file: .
           tags: robmellett/${{ matrix.image }}:test
           build-args: |
             WWWGROUP=1000
