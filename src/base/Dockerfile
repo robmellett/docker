@@ -1,4 +1,4 @@
-FROM phusion/baseimage:jammy-1.0.1
+FROM phusion/baseimage:noble
 LABEL Rob Mellett <dev@robmellett.com>
 
 ARG NODE_VERSION=24
