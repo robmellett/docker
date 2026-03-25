@@ -30,7 +30,7 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: ./src/${{ matrix.image }}
-          file: .
+          file: ./src/${{ matrix.image }}/Dockerfile
           tags: robmellett/${{ matrix.image }}:test
           build-args: |
             WWWGROUP=1000
