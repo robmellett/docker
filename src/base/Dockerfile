@@ -1,7 +1,7 @@
 FROM phusion/baseimage:jammy-1.0.1
 LABEL Rob Mellett <dev@robmellett.com>
 
-ARG NODE_VERSION=20
+ARG NODE_VERSION=24
 
 # Ensure UTF-8
 RUN locale-gen en_US.UTF-8
