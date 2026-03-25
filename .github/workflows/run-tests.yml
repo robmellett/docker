@@ -13,7 +13,7 @@ jobs:
       matrix:
         image: ["base", "php80", "php81", "php82", "php83", "php84", "php85"]
 
-    name: Build Docker Containers ${{ matrix.image }}
+    name: Build Docker Containers [${{ matrix.image }}]
 
     steps:
       - name: Check Out Repo
@@ -30,7 +30,7 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: ./src/${{ matrix.image }}
-          file: ./src/${{ matrix.image }}/Dockerfile
+          file: ./Dockerfile
           push: true
           tags: robmellett/${{ matrix.image }}:test
           build-args: |
