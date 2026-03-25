@@ -1,22 +1,15 @@
-FROM phusion/baseimage:jammy-1.0.1
-LABEL Rob Mellett <dev@robmellett.com>
+FROM phusion/baseimage:noble
+
+LABEL maintainer="Rob Mellett"
 
 ARG NODE_VERSION=24
 
 # Ensure UTF-8
-RUN locale-gen en_US.UTF-8
-ENV LANG en_US.UTF-8
-ENV LC_ALL en_US.UTF-8
+ENV TZ=UTC
+ENV LANG=C.UTF-8
 
 # Set Timezone to UTC
-RUN ln -sf /usr/share/zoneinfo/UTC /etc/localtime
-
-# Set Timezone to Melbourne, Australia
-# RUN ln -sf /usr/share/zoneinfo/Australia/Melbourne /etc/localtime
-
-# Add New User to run apps under
-RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 ubuntu
-RUN usermod -aG www-data ubuntu
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # Install Recommended Packages
 # Clean up APT when done to minimise filesize.
