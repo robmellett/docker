@@ -5,6 +5,11 @@ ARG NODE_VERSION=24
 ENV TZ=UTC
 ENV LANG=C.UTF-8
 
+# @See https://github.com/composer/composer/issues/9150
+ENV COMPOSER_CACHE_READ_ONLY=1
+
+# Install some additional packages and the Laravel
+# installer uses them when creating a new project
 RUN apt-get update \
     && apt-get install -y curl ca-certificates zip unzip git \
     && apt-get -y autoremove \
