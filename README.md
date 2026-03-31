@@ -40,6 +40,17 @@ This will allow you to pull the latest docker runtime updates from [Laravel Sail
 sh src/scripts/update-sail.sh
 ```
 
+If you need to install a Laravel project's dependencies without php / composer on your machine. The following command will assist you.
+
+```shell
+docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v $(pwd):/var/www/html \
+    -w /var/www/html \
+    laravelsail/php84-composer:latest \
+    composer install --ignore-platform-reqs
+```    
+
 ## Hasura CLI
 
 You can use the image with:

@@ -24,4 +24,4 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
 
 WORKDIR /app
 
-CMD ["composer/composer"]
+CMD ["bash"]
