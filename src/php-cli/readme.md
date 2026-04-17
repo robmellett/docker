@@ -53,14 +53,17 @@ To keep things lightweight on Arch, you can use Docker’s rootless mode or Podm
 
    If you want a shorthand, create a wrapper in your project:
 
-   ```run-composer.sh#L1-6
+   ```shell
    #!/bin/sh
 
    docker run --rm -it \
+    --user "$(id -u)":"$(id -g)" \
      -v "$(pwd)":/app \
      php-cli:latest "$@"
    ```
 
-   Make it executable (`chmod +x run-composer.sh`) and then run `./run-composer.sh composer install`, `./run-composer.sh php vendor/bin/phpunit`, and so on.
+Instead of running as root, match the container user to your host UID/GID when starting it:
+
+With identical UID/GID, Git sees you as the actual owner, so no “dubious ownership” warning. If you’re using an alias or function, just add the `--user "$(id -u)":"$(id -g)"` flag there as well.
 
 That’s it: a minimal containerized PHP toolchain on Arch that runs Composer and any `vendor/bin/*` scripts without polluting your host system.
