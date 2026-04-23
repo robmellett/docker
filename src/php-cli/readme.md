@@ -14,7 +14,7 @@ To keep things lightweight on Arch, you can use Docker’s rootless mode or Podm
    Put this `Dockerfile` somewhere in your project:
 
    ```Dockerfile#L1-11
-   FROM php:8.3-cli-alpine
+   FROM php:8.5-cli-alpine
 
    # Install Composer
    ENV COMPOSER_ALLOW_SUPERUSER=1 \
