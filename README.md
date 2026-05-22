@@ -51,6 +51,56 @@ docker run --rm \
     composer install --ignore-platform-reqs
 ```    
 
+## PHP CLI
+
+A lightweight `php:8.5-cli` image bundled with Composer, intended for running `php` and `composer` commands against a project directory without installing PHP on the host.
+
+- **No host PHP install.** No Homebrew/apt PHP, no `php.ini` tweaking, no PECL extensions to compile. Uninstall by deleting the image.
+- **Per-project PHP versions.** Swap `robmellett/php-85-cli` for a different tag per project — no `phpenv`/`asdf` juggling.
+- **Reproducible across machines.** The image is identical on your laptop, a colleague's machine, and CI. "Works on my machine" stops being a PHP-version problem.
+- **Composer included.** No separate Composer install or signature-verification ritual on every host.
+- **Cheap and disposable.** `--rm` means each invocation is ephemeral — nothing leaks onto the host.
+- **Matches CI.** The same image you run locally is what runs in GitHub Actions, so local passes mean CI passes (for PHP-version reasons, at least).
+
+The aliases below hide the `docker run` ceremony so it feels exactly like a native install.
+
+You can use the image with:
+
+- `robmellett/php-85-cli`
+
+
+### Usage
+
+Run a one-off command by mounting the project into `/app`:
+
+```shell
+docker run --rm -it \
+    --user "$(id -u):$(id -g)" \
+    -v "$(pwd)":/app \
+    robmellett/php-85-cli:latest composer install
+```
+
+### Shell aliases
+
+To make the container feel like a locally-installed PHP toolchain, add a wrapper function and aliases to your `~/.zshrc` (or `~/.bashrc`):
+
+```shell
+phpcli() {
+  docker run --rm -it \
+    --user "$(id -u):$(id -g)" \
+    -v "$(pwd)":/app \
+    -w /app \
+    robmellett/php-85-cli:latest "$@"
+}
+
+alias php='phpcli php'
+alias composer='phpcli composer'
+alias phpunit='phpcli php vendor/bin/phpunit'
+alias pest='phpcli php vendor/bin/pest'
+```
+
+Reload your shell (`source ~/.zshrc`) and then `php -v`, `composer install`, `phpunit`, etc. all run inside the container against the current working directory. Matching the container user to your host UID/GID keeps file ownership correct and avoids Git's "dubious ownership" warnings.
+
 ## Hasura CLI
 
 You can use the image with:
