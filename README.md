@@ -32,9 +32,15 @@ You can use the image with:
 - `robmellett/php-80` (No Longer maintained)
 - `robmellett/php-74` (No Longer maintained)
 
-You can automate the Laravel sail upgrade by running the following command:
+### How these images stay up to date
 
-This will allow you to pull the latest docker runtime updates from [Laravel Sail](https://github.com/laravel/sail).
+The PHP images are kept in sync with upstream [Laravel Sail](https://github.com/laravel/sail) automatically — there's no need to bump them by hand:
+
+1. **Weekly Sail sync (Wednesdays).** `.github/workflows/automatic-upgrades.yml` runs every Wednesday at 00:00 UTC (`0 0 * * 3`). It checks out `laravel/sail`, copies each `runtimes/8.x/*` directory over the matching `src/php8x/` folder in this repo, and opens a PR titled *"[Weekly] Laravel Sail Docker Image Update"* via [`peter-evans/create-pull-request`](https://github.com/peter-evans/create-pull-request). Review the diff and merge if it looks sane.
+2. **Image rebuild on merge.** Merging that PR into `master` triggers `.github/workflows/build-php.yml`, which builds the `php-81`…`php-85` images in a matrix and pushes them to Docker Hub as `robmellett/php-<version>:latest`.
+3. **Weekly rebuild safety net (Sundays).** `build-php.yml` also runs on its own schedule (`0 0 * * 0`) every Sunday, so the published images get a fresh rebuild against the latest base layers even if no Sail PR landed that week.
+
+If you ever need to run the sync manually — e.g. to test a Sail change locally before the Wednesday cron — there's a script that mirrors what the workflow does:
 
 ```shell
 sh src/scripts/update-sail.sh
