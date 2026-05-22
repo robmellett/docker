@@ -11,7 +11,7 @@ ENV COMPOSER_CACHE_READ_ONLY=1
 # Install some additional packages and the Laravel
 # installer uses them when creating a new project
 RUN apt-get update \
-    && apt-get install -y curl ca-certificates zip unzip git \
+    && apt-get install -y curl ca-certificates zip unzip git libzip-dev libsqlite3-dev \
     && apt-get -y autoremove \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -24,4 +24,4 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
 
 WORKDIR /app
 
-CMD ["composer/composer"]
+CMD ["php", "-a"]
