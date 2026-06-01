@@ -7,11 +7,13 @@ ENV LANG=C.UTF-8
 
 # @See https://github.com/composer/composer/issues/9150
 ENV COMPOSER_CACHE_READ_ONLY=1
+ENV COMPOSER_HOME=/usr/local/share/composer
 
 # Install some additional packages and the Laravel
 # installer uses them when creating a new project
 RUN apt-get update \
     && apt-get install -y curl ca-certificates zip unzip git libzip-dev libsqlite3-dev \
+    && docker-php-ext-install zip \
     && apt-get -y autoremove \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -23,6 +25,8 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && rm composer-setup.php composer-installer.sig
 
 RUN composer global require laravel/installer
+
+ENV PATH="${COMPOSER_HOME}/vendor/bin:${PATH}"
 
 WORKDIR /app
 
