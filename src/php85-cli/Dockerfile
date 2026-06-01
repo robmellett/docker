@@ -22,6 +22,8 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php --install-dir=/usr/local/bin --filename=composer \
     && rm composer-setup.php composer-installer.sig
 
+RUN composer global require laravel/installer
+
 WORKDIR /app
 
 CMD ["php", "-a"]
