@@ -103,6 +103,7 @@ alias php='phpcli php'
 alias composer='phpcli composer'
 alias phpunit='phpcli php vendor/bin/phpunit'
 alias pest='phpcli php vendor/bin/pest'
+alias laravel='phpcli laravel'
 ```
 
 Reload your shell (`source ~/.zshrc`) and then `php -v`, `composer install`, `phpunit`, etc. all run inside the container against the current working directory. Matching the container user to your host UID/GID keeps file ownership correct and avoids Git's "dubious ownership" warnings.
