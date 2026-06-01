@@ -107,6 +107,50 @@ alias pest='phpcli php vendor/bin/pest'
 
 Reload your shell (`source ~/.zshrc`) and then `php -v`, `composer install`, `phpunit`, etc. all run inside the container against the current working directory. Matching the container user to your host UID/GID keeps file ownership correct and avoids Git's "dubious ownership" warnings.
 
+## Laravel Installer
+
+A `php:8.4-cli` image with Composer and the [Laravel installer](https://laravel.com/docs/installation) pre-installed, so you can scaffold new Laravel projects without PHP or Composer on your host.
+
+- `robmellett/laravel-installer`
+
+### Usage
+
+Create a new Laravel project in the current directory:
+
+```shell
+docker run --rm -it \
+    --user "$(id -u):$(id -g)" \
+    -v "$(pwd)":/app \
+    -w /app \
+    robmellett/laravel-installer:latest \
+    new myapp
+```
+
+### Shell alias
+
+Add the following to your `~/.zshrc` (or `~/.bashrc`) so `laravel` works like a native install:
+
+```shell
+laravel() {
+  docker run --rm -it \
+    --user "$(id -u):$(id -g)" \
+    -v "$(pwd)":/app \
+    -w /app \
+    robmellett/laravel-installer:latest \
+    "$@"
+}
+```
+
+Reload your shell (`source ~/.zshrc`) and then scaffold projects normally:
+
+```shell
+laravel new myapp
+laravel new myapp --git --branch="main"
+laravel new myapp --jet --stack=livewire
+```
+
+The `--user` flag matches the container UID/GID to your host user so generated files are owned by you, not root.
+
 ## Hasura CLI
 
 You can use the image with:
