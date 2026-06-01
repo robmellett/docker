@@ -86,6 +86,32 @@ docker run --rm -it \
     robmellett/php-85-cli:latest composer install
 ```
 
+### Installing Laravel
+
+The image bundles `laravel/installer`, so you can scaffold a new project without installing anything on your host:
+
+```shell
+docker run --rm -it \
+    --user "$(id -u):$(id -g)" \
+    -v "$(pwd)":/app \
+    robmellett/php-85-cli:latest \
+    laravel new my-app
+```
+
+This creates a `my-app/` directory inside your current working directory. The interactive installer will prompt for starter kit preferences, testing framework, and other options.
+
+Alternatively, install via Composer directly:
+
+```shell
+docker run --rm -it \
+    --user "$(id -u):$(id -g)" \
+    -v "$(pwd)":/app \
+    robmellett/php-85-cli:latest \
+    composer create-project laravel/laravel my-app
+```
+
+Once the project is created, `cd` into it and use the [shell aliases](#shell-aliases) below to run `php` and `composer` commands as if they were installed natively.
+
 ### Shell aliases
 
 To make the container feel like a locally-installed PHP toolchain, add a wrapper function and aliases to your `~/.zshrc` (or `~/.bashrc`):
