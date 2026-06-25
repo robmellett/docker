@@ -1,7 +1,33 @@
-  {
-    "extends": ["config:base"],
-    "automerge": true,
-    "masterIssue": true,
-    "timezone": "Australia/melbourne",
-    "schedule": ["every weekend"]
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:best-practices",
+    "schedule:weekly"
+  ],
+  "dependencyDashboard": true,
+  "timezone": "Australia/Melbourne",
+  "schedule": ["* 0-6 * * 6"],
+  "minimumReleaseAge": "3 days",
+  "labels": ["type: dependencies", "renovate"],
+  "prConcurrentLimit": 10,
+  "prHourlyLimit": 0,
+  "commitHourlyLimit": 4,
+  "rebaseWhen": "conflicted",
+  "platformAutomerge": true,
+  "packageRules": [
+    {
+      "description": "Group and automerge digest + patch + minor image updates",
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["digest", "patch", "minor"],
+      "groupName": "docker images (non-major)",
+      "groupSlug": "docker-non-major",
+      "automerge": true
+    },
+    {
+      "description": "Major image bumps reviewed manually",
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["major"],
+      "automerge": false
+    }
+  ]
 }
