@@ -1,4 +1,4 @@
-FROM ubuntu:24.04
+FROM ubuntu:26.04@sha256:53958ec7b67c2c9355df922dd08dbf0360611f8c3cdb656875e81873db9ffdba
 
 LABEL maintainer="Taylor Otwell"
 
