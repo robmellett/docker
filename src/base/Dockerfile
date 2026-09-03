@@ -1,4 +1,4 @@
-FROM phusion/baseimage:noble
+FROM phusion/baseimage:noble@sha256:90a6ee3709ead73a22444594ef6f03a31a25824ae2f798c1220c6d78b63b5954
 
 LABEL maintainer="Rob Mellett"
 
