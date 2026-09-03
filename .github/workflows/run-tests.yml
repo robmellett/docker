@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        image: ["base", "php84", "php85", "php85-cli"]
+        image: ["base", "php84", "php85", "php85-cli", "php84-ci", "php85-ci"]
 
     name: Build Containers [${{ matrix.image }}]
 
