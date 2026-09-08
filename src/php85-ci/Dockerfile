@@ -28,6 +28,7 @@ RUN apk add --no-cache \
         libpq \
         libzip \
         openssh-client \
+        postgresql-client \
         unzip \
     && apk add --no-cache --virtual .build-deps \
         $PHPIZE_DEPS \
@@ -50,8 +51,10 @@ RUN apk add --no-cache \
 COPY php.ini /usr/local/etc/php/conf.d/99-ci.ini
 
 # CI checkouts are frequently owned by a different UID than the container user,
-# which otherwise trips Git's "dubious ownership" guard.
-RUN git config --global --add safe.directory '*'
+# which otherwise trips Git's "dubious ownership" guard. This goes in the system
+# config (/etc/gitconfig) rather than root's --global one, so it still applies
+# when the image is run with --user, as the README's examples do.
+RUN git config --system --add safe.directory '*'
 
 WORKDIR /app
 
