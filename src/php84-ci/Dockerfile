@@ -28,6 +28,7 @@ RUN apk add --no-cache \
         libpq \
         libzip \
         openssh-client \
+        postgresql-client \
         unzip \
     && apk add --no-cache --virtual .build-deps \
         $PHPIZE_DEPS \

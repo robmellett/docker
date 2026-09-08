@@ -119,12 +119,13 @@ Minimal Alpine-based images for running test suites and static analysis in CI. W
 Built on `php:<version>-cli-alpine` with Composer 2 copied from the official `composer` image, plus:
 
 - **Extensions:** `bcmath`, `intl`, `pcntl`, `pdo_mysql`, `pdo_pgsql`, `zip`, `redis`, and the built-in `pdo_sqlite` / `sqlite3`.
+- **Postgres client:** `psql` (from Alpine's `postgresql-client`), so jobs can create/seed databases or wait for a Postgres service container to come up.
 - **Coverage:** `pcov`, installed but disabled (`pcov.enabled = 0`). Turn it on per-run rather than paying for it on every test — see below.
 - **`memory_limit = -1`,** so PHPStan/Larastan and Composer don't fall over on large projects.
 - **`git config --global --add safe.directory '*'`,** because CI checkouts usually aren't owned by the container user.
 - **`git` plus `openssh-client`,** so Composer can pull private packages over SSH remotes. Alpine's `git` doesn't bring an SSH client with it.
 
-Deliberately *not* included: Node, Xdebug, database clients, `gd`/`imagick`, a web server, or a supervisor. If a job needs those, use `robmellett/php-84` instead.
+Deliberately *not* included: Node, Xdebug, the MySQL client, `gd`/`imagick`, a web server, or a supervisor. If a job needs those, use `robmellett/php-84` instead.
 
 > **Note:** these are musl (Alpine) builds, so they're not byte-for-byte the same runtime as the Ubuntu-based `robmellett/php-8x` production images. That's the trade for the smaller image; for the vast majority of test suites it makes no difference.
 
