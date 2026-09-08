@@ -18,6 +18,8 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # Runtime libraries stay; the toolchain needed to compile the extensions is
 # installed as a virtual package and removed again in the same layer.
+# openssh-client is what Git shells out to for SSH remotes, e.g. private
+# Composer packages.
 RUN apk add --no-cache \
         ca-certificates \
         git \
@@ -25,6 +27,7 @@ RUN apk add --no-cache \
         icu-libs \
         libpq \
         libzip \
+        openssh-client \
         unzip \
     && apk add --no-cache --virtual .build-deps \
         $PHPIZE_DEPS \
