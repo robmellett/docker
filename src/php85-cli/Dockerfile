@@ -1,4 +1,4 @@
-FROM php:8.5-cli
+FROM php:8.5-cli@sha256:9ebdf4c28ab12c02085e171c31e22ac5f7bbb6a9f6927e3bc3dfe7ee23df51e0
 
 ARG NODE_VERSION=24
 

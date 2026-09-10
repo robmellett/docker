@@ -14,7 +14,7 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 ENV COMPOSER_HOME=/tmp/composer
 ENV COMPOSER_NO_INTERACTION=1
 
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2@sha256:d8f6343d3fae98107426bc49163ccad46ef85aabd4a27d80a74401fab4aba332 /usr/bin/composer /usr/bin/composer
 
 # Runtime libraries stay; the toolchain needed to compile the extensions is
 # installed as a virtual package and removed again in the same layer.
