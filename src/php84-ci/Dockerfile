@@ -1,4 +1,4 @@
-FROM php:8.5-cli-alpine@sha256:aa66ee4275e0472bafcd18e35142499fcbda6ac90e641e751418e052e6a0d812
+FROM php:8.5-cli-alpine@sha256:93684051146ec037620855feb77f278090bde45ddc030801cd3f2a7685bc4deb
 
 LABEL maintainer="Rob Mellett"
 LABEL org.opencontainers.image.title="php-84-ci"
