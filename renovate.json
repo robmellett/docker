@@ -16,6 +16,13 @@
   "platformAutomerge": true,
   "packageRules": [
     {
+      "description": "php-84-ci must stay on the PHP 8.4 line",
+      "matchFileNames": ["src/php84-ci/**"],
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["php"],
+      "allowedVersions": "<8.5"
+    },
+    {
       "description": "Group and automerge digest + patch + minor image updates",
       "matchDatasources": ["docker"],
       "matchUpdateTypes": ["digest", "patch", "minor"],
