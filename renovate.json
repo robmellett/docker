@@ -28,6 +28,17 @@
       "matchDatasources": ["docker"],
       "matchUpdateTypes": ["major"],
       "automerge": false
+    },
+    {
+      "description": "Sail runtimes are synced from laravel/sail by automatic-upgrades.yml; leave them as upstream ships them",
+      "matchFileNames": [
+        "src/php81/**",
+        "src/php82/**",
+        "src/php83/**",
+        "src/php84/**",
+        "src/php85/**"
+      ],
+      "enabled": false
     }
   ]
 }
