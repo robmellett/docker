@@ -10,10 +10,12 @@ ENV COMPOSER_CACHE_READ_ONLY=1
 ENV COMPOSER_HOME=/usr/local/share/composer
 
 # Install some additional packages and the Laravel
-# installer uses them when creating a new project
+# installer uses them when creating a new project.
+# openssh-client lets Composer pull private repositories over SSH.
 RUN apt-get update \
-    && apt-get install -y curl ca-certificates zip unzip git libzip-dev libsqlite3-dev \
-    && docker-php-ext-install zip \
+    && apt-get install -y curl ca-certificates zip unzip git openssh-client \
+       libzip-dev libsqlite3-dev libicu-dev libpq-dev \
+    && docker-php-ext-install zip intl pcntl bcmath pdo_mysql pdo_pgsql \
     && apt-get -y autoremove \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
