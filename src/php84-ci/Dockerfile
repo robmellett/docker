@@ -1,4 +1,4 @@
-FROM php:8.4-cli-alpine@sha256:d8784155c4d37986be9ddd7a8950df7e78998cc48e35472cd69e2b9371424a65
+FROM php:8.4-cli-alpine@sha256:b9014f1cc1983827459faed83b315a40ead9860bdadefc042b31f1540ef8c746
 
 LABEL maintainer="Rob Mellett"
 LABEL org.opencontainers.image.title="php-84-ci"
@@ -14,7 +14,7 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 ENV COMPOSER_HOME=/tmp/composer
 ENV COMPOSER_NO_INTERACTION=1
 
-COPY --from=composer:2@sha256:af98f42dfff7c68ba8d53c2164fd9fde1087b7d449514baa38c418b1f6bc4bac /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2@sha256:ca11f643d7791ebdd90a34fc20caf11380d434007ae539a9ea75cd9212e13dca /usr/bin/composer /usr/bin/composer
 
 # Runtime libraries stay; the toolchain needed to compile the extensions is
 # installed as a virtual package and removed again in the same layer.
