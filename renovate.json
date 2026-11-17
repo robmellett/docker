@@ -4,7 +4,9 @@
     "config:best-practices",
     "schedule:weekly"
   ],
-  "dependencyDashboard": true,
+  "dependencyDashboard": {
+    "enabled": true
+  },
   "timezone": "Australia/Melbourne",
   "schedule": ["* 0-6 * * 6"],
   "minimumReleaseAge": "3 days",
